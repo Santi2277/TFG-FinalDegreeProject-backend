@@ -1,0 +1,117 @@
+
+
+insert into perfil_grupo(nombre, info) values ('entrenador', 'Perfil entrenador personal, puede interactuar subiendo ejercicios, parámetros y medidas en la aplicación en función de su nivel de entrenador.');
+insert into perfil_grupo(nombre, info) values ('usuario', 'Perfiles estándar, puede consultar ejercicios de entrenadores y crear su rutina de entrenamiento.');
+
+
+insert into perfil (nombre, apellidos, correo, nick, perfil_grupo_id) values ('Santi', 'Lozano Castellón', 'santi_3_92@hotmail.com', 'LozanoFit', 1);
+insert into perfil (nombre, apellidos, correo, nick, perfil_grupo_id) values ('Marta', 'Roda', 'marta.roda@gmail.com', 'MujeresFit', 1);
+insert into perfil (nombre, apellidos, correo, nick, perfil_grupo_id) values ('Joan', 'Lopez', 'joan.lopez@gmail.com', 'Shwan', 1);
+insert into perfil (nombre, apellidos, correo, nick, perfil_grupo_id) values ('Santi', 'Lozano Castellón', 'santi.llcc.92@gmail.com', 'Santi2277', 2);
+insert into perfil (nombre, apellidos, correo, perfil_grupo_id) values ('Maria', 'López', 'maria.lopez@hotmail.com', 2);
+insert into perfil (nombre, apellidos, correo, perfil_grupo_id) values ('Alvaro', 'Molinos', 'alvaro.molinos@hotmail.com', 2);
+insert into perfil (nombre, apellidos, correo, perfil_grupo_id) values ('Fernando', 'Gonzalez', 'fernando.gonzalez@hotmail.com', 2);
+insert into perfil (nombre, apellidos, correo, perfil_grupo_id) values ('Alba', 'Martín', 'alba.martin@hotmail.com', 2);
+
+
+insert into ejercicio_grupo (nombre, diminutivo, info) values ('musculación', 'musc', 'Ejercicios de musculación');
+insert into ejercicio_grupo (nombre, diminutivo, info) values ('estiramientos', 'est', 'Estiramientos');
+insert into ejercicio_grupo (nombre, diminutivo, info) values ('cardio', 'cardio', 'Ejercicios cardiovasculares, de resistencia');
+insert into ejercicio_grupo (nombre, diminutivo, info) values ('movilidad', 'mov', 'Ejercicios de movilidad articular');
+
+
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Curl Banco Scott', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Curl Con Giro', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Curl Martillo', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Superabdominales', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Crunch', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Crunch Lateral', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Bodysaw', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Plancha Lateral', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Press Declinado', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Press 45º Mancuernas Juntas', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Flexiones de Pecho', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Sentadilla', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Jumping Jacks', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Lunge Lateral', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Maquina Hombros con Codos', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Fly Reverso Inclinado', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+insert into ejercicio (nombre, descripcion_corta, descripcion_larga, core, fecha_creacion, fecha_modificacion, ejercicio_grupo_id, creador_id) values ('Box Jump', 'descripción corta aquí', 'descripción larga aquí (falta escribirlas)', false, '2021-03-07', '2021-03-07', 1, 1);
+
+
+insert into parametro (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Músculo', 'musc', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Objetivo', 'obj', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Material', 'mat', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Nivel', 'niv', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Lugar', '', '2021-03-07', '2021-03-07', 1, false);
+
+
+insert into parametro_grupo (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_id, core) values ('Clasificación Muscular (Core)', '', '2021-03-07', '2021-03-07', 1, 1, true);
+insert into parametro_grupo (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_id, core) values ('3 Objetivos', '', '2021-03-07', '2021-03-07', 1, 2, true);
+insert into parametro_grupo (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_id, core) values ('5 Niveles de Fuerza', '', '2021-03-07', '2021-03-07', 1, 4, true);
+insert into parametro_grupo (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_id, core) values ('Gomas', '', '2021-03-07', '2021-03-07', 1, 3, true);
+insert into parametro_grupo (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_id, core) values ('Peso Libre', '', '2021-03-07', '2021-03-07', 1, 3, true);
+insert into parametro_grupo (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_id, core) values ('Aire Libre', '', '2021-03-07', '2021-03-07', 1, 5, false);
+insert into parametro_grupo (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_id, core) values ('Gimnasio', '', '2021-03-07', '2021-03-07', 1, 5, false);
+
+
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Glúteo', 'glut', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Bíceps', 'bic', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Salud', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Volumen', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Definición', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Básico', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('En Forma', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Atlético', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Fuerte', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Muy Fuerte', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Mini Band', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Goma Larga Azul', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Goma 8 Compartimentos', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Mancuernas', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Kettlebel', '', '2021-03-07', '2021-03-07', 1, true);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Montaña', '', '2021-03-07', '2021-03-07', 1, false);
+insert into parametro_lista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, core) values ('Parque', '', '2021-03-07', '2021-03-07', 1, false);
+
+
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (1, 1);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (1, 2);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (2, 3);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (2, 4);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (2, 5);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (3, 6);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (3, 7);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (3, 8);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (3, 9);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (3, 10);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (4, 11);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (4, 12);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (4, 13);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (5, 14);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (5, 15);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (6, 16);
+insert into parametro_grupo_jt_parametro_lista (parametro_grupo_id, parametro_lista_id) values (6, 17);
+
+
+
+insert into parametro_sublista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_lista_id, core) values ('Medio', '', '2021-03-07', '2021-03-07', 1, 1, true);
+insert into parametro_sublista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_lista_id, core) values ('Mayor', '', '2021-03-07', '2021-03-07', 1, 1, true);
+insert into parametro_sublista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_lista_id, core) values ('Menor', '', '2021-03-07', '2021-03-07', 1, 1, true);
+insert into parametro_sublista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_lista_id, core) values ('C. Larga', '', '2021-03-07', '2021-03-07', 1, 2, true);
+insert into parametro_sublista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_lista_id, core) values ('C. Corta', '', '2021-03-07', '2021-03-07', 1, 2, true);
+insert into parametro_sublista (nombre, diminutivo, fecha_creacion, fecha_modificacion, creador_id, parametro_lista_id, core) values ('C. Braquial', '', '2021-03-07', '2021-03-07', 1, 2, true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

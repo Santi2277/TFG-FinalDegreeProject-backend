@@ -1,0 +1,54 @@
+package com.entrenadores.uoctfg.entity;
+
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+@Entity
+@Table(name="perfil")
+@Data
+public class Perfil {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "nombre")
+    private String nombre;
+    
+    @Column(name = "apellidos")
+    private String apellidos;
+    
+    @Column(name = "correo")
+    private String correo;
+    
+    @Column(name = "nick")
+    private String nick;
+    
+    @ManyToOne
+    @JoinColumn(name = "perfil_grupo_id", nullable = false)
+    private PerfilGrupo perfilGrupo;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<Ejercicio> ejerciciosCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<Parametro> parametrosCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<ParametroGrupo> parametrosGrupoCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<ParametroLista> parametroListasCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<ParametroSublista> parametroSublistasCreador;
+    
+    
+}
