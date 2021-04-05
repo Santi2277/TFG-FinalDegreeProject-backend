@@ -10,20 +10,17 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="medida_grupo")
+@Table(name="rutina_dia")
 @Data
-public class MedidaGrupo {
+public class RutinaDia {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    @Column(name = "nombre")
-    private String nombre;
-    
-    @Column(name = "info")
-    private String info;
+	
+	@Column(name = "numero")
+    private int numero;
     
     @Column(name = "core")
     private boolean core;
@@ -44,7 +41,10 @@ public class MedidaGrupo {
     @JoinColumn(name = "modificador_id", nullable = false)
     private Perfil modificador;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medidaGrupo")
-    private List<MedidaUnidad> medidasUnidad;
+    @ManyToOne
+    @JoinColumn(name = "rutina_id", nullable = false)
+    private Rutina rutina;
     
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutinaDia")
+    private List<RutinaDiaEjercicioMedidaParametroEjercicio> rutinasDiaEjercicioMedidaParametroEjercicio;
 }

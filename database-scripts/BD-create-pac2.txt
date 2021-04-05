@@ -65,10 +65,12 @@ CREATE TABLE `ejercicio` (
   `fecha_creacion` DATETIME(6) DEFAULT NULL,
   `fecha_modificacion` DATETIME(6) DEFAULT NULL,
   `creador_id` BIGINT(20) NOT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
   `ejercicio_grupo_id` BIGINT(20) NOT NULL,
-  `core` boolean NOT NULL,
+  `core` boolean DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_ejercicio_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_ejercicio_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`),
   CONSTRAINT `fk_ejercicio_ejercicio_grupo_id` FOREIGN KEY (`ejercicio_grupo_id`) REFERENCES `ejercicio_grupo` (`id`)
 )
 ENGINE=InnoDB
@@ -86,9 +88,11 @@ CREATE TABLE `parametro` (
   `fecha_creacion` DATETIME(6) DEFAULT NULL,
   `fecha_modificacion` DATETIME(6) DEFAULT NULL,
   `creador_id` BIGINT(20) NOT NULL,
-  `core` boolean NOT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
+  `core` boolean DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_parametro_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`)
+  CONSTRAINT `fk_parametro_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_parametro_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`)
 )
 ENGINE=InnoDB
 AUTO_INCREMENT = 1; 
@@ -105,10 +109,12 @@ CREATE TABLE `parametro_grupo` (
   `fecha_creacion` DATETIME(6) DEFAULT NULL,
   `fecha_modificacion` DATETIME(6) DEFAULT NULL,
   `creador_id` BIGINT(20) NOT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
   `parametro_id` BIGINT(20) NOT NULL,
-  `core` boolean NOT NULL,
+  `core` boolean DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_parametro_grupo_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_parametro_grupo_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`),
   CONSTRAINT `fk_parametro_grupo_parametro_id` FOREIGN KEY (`parametro_id`) REFERENCES `parametro` (`id`)
 )
 ENGINE=InnoDB
@@ -126,9 +132,11 @@ CREATE TABLE `parametro_lista` (
   `fecha_creacion` DATETIME(6) DEFAULT NULL,
   `fecha_modificacion` DATETIME(6) DEFAULT NULL,
   `creador_id` BIGINT(20) NOT NULL,
-  `core` boolean NOT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
+  `core` boolean DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_parametro_lista_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`)
+  CONSTRAINT `fk_parametro_lista_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_parametro_lista_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`)
 )
 ENGINE=InnoDB
 AUTO_INCREMENT = 1; 
@@ -145,10 +153,12 @@ CREATE TABLE `parametro_sublista` (
   `fecha_creacion` DATETIME(6) DEFAULT NULL,
   `fecha_modificacion` DATETIME(6) DEFAULT NULL,
   `creador_id` BIGINT(20) NOT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
   `parametro_lista_id` BIGINT(20) NOT NULL,
-  `core` boolean NOT NULL,
+  `core` boolean DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_parametro_sublista_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_parametro_sublista_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`),
   CONSTRAINT `fk_parametro_sublista_parametro_lista_id` FOREIGN KEY (`parametro_lista_id`) REFERENCES `parametro_lista` (`id`)
 )
 ENGINE=InnoDB
@@ -256,9 +266,11 @@ CREATE TABLE `medida_grupo` (
   `fecha_creacion` DATETIME(6) DEFAULT NULL,
   `fecha_modificacion` DATETIME(6) DEFAULT NULL,
   `creador_id` BIGINT(20) NOT NULL,
-  `core` boolean NOT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
+  `core` boolean DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_medida_grupo_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`)
+  CONSTRAINT `fk_medida_grupo_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_medida_grupo_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`)
 ); 
 
 -- -----------------------------------------------------
@@ -273,103 +285,137 @@ CREATE TABLE `medida_unidad` (
   `fecha_creacion` DATETIME(6) DEFAULT NULL,
   `fecha_modificacion` DATETIME(6) DEFAULT NULL,
   `creador_id` BIGINT(20) NOT NULL,
-  `core` boolean NOT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
+  `core` boolean DEFAULT NULL,
   `medida_grupo_id` BIGINT(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT FK_medida_grupo_medida_unidad FOREIGN KEY (`medida_grupo_id`) REFERENCES medida_grupo(id),
-  CONSTRAINT `fk_medida_unidad_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`)
+  CONSTRAINT `fk_medida_unidad_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_medida_unidad_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`)
 ); 
 
+
+
 -- -----------------------------------------------------
--- Tabla `web_1001_entrenadores`.`medida_valor`
+-- Tabla `web_1001_entrenadores`.`medida_parametro_ejercicio`
 -- -----------------------------------------------------
 
-CREATE TABLE `medida_valor` (
+CREATE TABLE `medida_parametro_ejercicio` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `valor` float NOT NULL,
-  `info` varchar(2000) DEFAULT NULL,
+  `medida_valor` float NOT NULL,
   `fecha_creacion` DATETIME(6) DEFAULT NULL,
   `fecha_modificacion` DATETIME(6) DEFAULT NULL,
   `creador_id` BIGINT(20) NOT NULL,
-  `core` boolean NOT NULL,
-  `medida_unidad_id` BIGINT(20) DEFAULT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
+  `core` boolean DEFAULT NULL,
+  `ejercicio_id` BIGINT(20) NOT NULL,
+  `medida_unidad_id` BIGINT(20) NOT NULL,
+  `parametro_lista_id` BIGINT(20) NOT NULL,
+  `parametro_sublista_id` BIGINT(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT FK_medida_unidad_medida_valor FOREIGN KEY (`medida_unidad_id`) REFERENCES medida_unidad(id),
-  CONSTRAINT `fk_medida_valor_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`)
-); 
-
--- -----------------------------------------------------
--- Tabla `web_1001_entrenadores`.`medidas_lista`
--- -----------------------------------------------------
-
-CREATE TABLE `medidas_lista` (
-  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(150) NOT NULL,
-  `info` varchar(2000) DEFAULT NULL,
-  `fecha_creacion` DATETIME(6) DEFAULT NULL,
-  `fecha_modificacion` DATETIME(6) DEFAULT NULL,
-  `creador_id` BIGINT(20) NOT NULL,
-  `core` boolean NOT NULL,
-  `ejercicio_id` BIGINT(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `fk_medidas_lista_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
-  CONSTRAINT FK_medidas_lista_ejercicio_id FOREIGN KEY (`ejercicio_id`) REFERENCES ejercicio(id)
+  CONSTRAINT `fk_medida_parametro_ejercicio_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_medida_parametro_ejercicio_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_medida_parametro_ejercicio_ejercicio` FOREIGN KEY (`ejercicio_id`) REFERENCES `ejercicio` (`id`),
+  CONSTRAINT `fk_medida_parametro_ejercicio_medida_unidad` FOREIGN KEY (`medida_unidad_id`) REFERENCES `medida_unidad` (`id`),
+  CONSTRAINT `fk_medida_parametro_ejercicio_parametro_lista` FOREIGN KEY (`parametro_lista_id`) REFERENCES `parametro_lista` (`id`),
+  CONSTRAINT `fk_medida_parametro_ejercicio_parametro_sublista` FOREIGN KEY (`parametro_sublista_id`) REFERENCES `parametro_sublista` (`id`)
 );
 
 
 -- -----------------------------------------------------
--- Tabla `web_1001_entrenadores`.`medidas_lista_jt_medida_valor`
+-- Tabla `web_1001_entrenadores`.`rutina`
 -- -----------------------------------------------------
 
-CREATE TABLE `medidas_lista_jt_medida_valor` (
-  `medidas_lista_id` BIGINT(20) NOT NULL,
-  `medida_valor_id` BIGINT(20) NOT NULL,
-  PRIMARY KEY (`medidas_lista_id`, `medida_valor_id`),
-  CONSTRAINT FK_medidas_lista_jt_medidas_lista_medida_valor FOREIGN KEY (`medidas_lista_id`)
-  REFERENCES medidas_lista(id),
-  CONSTRAINT FK_medida_valor_jt_medidas_lista_medida_valor FOREIGN KEY (`medida_valor_id`)
-  REFERENCES medida_valor(id)
+CREATE TABLE `rutina` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(150) NOT NULL,
+  `numero_dias` BIGINT(20) NOT NULL,
+  `parametro_libre` boolean NOT NULL,
+  `descripcion_corta` varchar(2000) DEFAULT NULL,
+  `info` varchar(2000) DEFAULT NULL,
+  `fecha_creacion` DATETIME(6) DEFAULT NULL,
+  `fecha_modificacion` DATETIME(6) DEFAULT NULL,
+  `creador_id` BIGINT(20) NOT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
+  `core` boolean DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_rutina_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_rutina_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`)
+)
+ENGINE=InnoDB
+AUTO_INCREMENT = 1;
+
+
+-- -----------------------------------------------------
+-- Tabla `web_1001_entrenadores`.`rutina_dia`
+-- -----------------------------------------------------
+
+CREATE TABLE `rutina_dia` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `numero` BIGINT(20) NOT NULL,
+  `fecha_creacion` DATETIME(6) DEFAULT NULL,
+  `fecha_modificacion` DATETIME(6) DEFAULT NULL,
+  `creador_id` BIGINT(20) NOT NULL,
+  `modificador_id` BIGINT(20) DEFAULT NULL,
+  `rutina_id` BIGINT(20) NOT NULL,
+  `core` boolean DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_rutina_dia_creador_id` FOREIGN KEY (`creador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_rutina_dia_modificador_id` FOREIGN KEY (`modificador_id`) REFERENCES `perfil` (`id`),
+  CONSTRAINT `fk_rutina_dia_rutina_id` FOREIGN KEY (`rutina_id`) REFERENCES `rutina` (`id`)
+)
+ENGINE=InnoDB
+AUTO_INCREMENT = 1;
+
+
+-- -----------------------------------------------------
+-- Tabla `web_1001_entrenadores`.`rutina_dia_jtm_ejercicio_jtm_medida_parametro_ejercicio`
+-- -----------------------------------------------------
+
+CREATE TABLE `rutina_dia_jtm_ejercicio_jtm_medida_parametro_ejercicio` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `rutina_dia_id` BIGINT(20) NOT NULL,
+  `ejercicio_id` BIGINT(20) NOT NULL,
+  `medida_parametro_ejercicio_id` BIGINT(20) NOT NULL,
+  `secuencia_ejercicio` BIGINT(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT FK_rd_e_mpe_rutina_dia FOREIGN KEY (`rutina_dia_id`)
+  REFERENCES rutina_dia(id),
+  CONSTRAINT FK_rd_e_mpe_ejercicio FOREIGN KEY (`ejercicio_id`)
+  REFERENCES ejercicio(id),
+  CONSTRAINT FK_rd_e_mpe_medida_parametro_ejercicio FOREIGN KEY (`medida_parametro_ejercicio_id`)
+  REFERENCES medida_parametro_ejercicio(id)
 )
 ENGINE=InnoDB;
 
+
 -- -----------------------------------------------------
--- Tabla `web_1001_entrenadores`.`medidas_lista_jt_parametro_lista`
+-- Tabla `web_1001_entrenadores`.`rutina_jt_parametro_lista`
 -- -----------------------------------------------------
 
-CREATE TABLE `medidas_lista_jt_parametro_lista` (
-  `medidas_lista_id` BIGINT(20) NOT NULL,
+CREATE TABLE `rutina_jt_parametro_lista` (
+  `rutina_id` BIGINT(20) NOT NULL,
   `parametro_lista_id` BIGINT(20) NOT NULL,
-  PRIMARY KEY (`medidas_lista_id`, `parametro_lista_id`),
-  CONSTRAINT FK_medidas_lista_jt_medidas_lista_parametro_lista FOREIGN KEY (`medidas_lista_id`)
-  REFERENCES medidas_lista(id),
-  CONSTRAINT FK_parametro_lista_jt_medidas_lista_parametro_lista FOREIGN KEY (`parametro_lista_id`)
+  PRIMARY KEY (`rutina_id`, `parametro_lista_id`),
+  CONSTRAINT FK_rutina_jt_rutina_parametro_lista FOREIGN KEY (`rutina_id`)
+  REFERENCES rutina(id),
+  CONSTRAINT FK_parametro_lista_jt_rutina_parametro_lista FOREIGN KEY (`parametro_lista_id`)
   REFERENCES parametro_lista(id)
 )
 ENGINE=InnoDB;
 
 -- -----------------------------------------------------
--- Tabla `web_1001_entrenadores`.`medidas_lista_jt_parametro_sublista`
+-- Tabla `web_1001_entrenadores`.`rutina_jt_parametro_sublista`
 -- -----------------------------------------------------
 
-CREATE TABLE `medidas_lista_jt_parametro_sublista` (
-  `medidas_lista_id` BIGINT(20) NOT NULL,
+CREATE TABLE `rutina_jt_parametro_sublista` (
+  `rutina_id` BIGINT(20) NOT NULL,
   `parametro_sublista_id` BIGINT(20) NOT NULL,
-  PRIMARY KEY (`medidas_lista_id`, `parametro_sublista_id`),
-  CONSTRAINT FK_medidas_lista_jt_medidas_lista_parametro_sublista FOREIGN KEY (`medidas_lista_id`)
-  REFERENCES medidas_lista(id),
-  CONSTRAINT FK_parametro_sublista_jt_medidas_lista_parametro_sublista FOREIGN KEY (`parametro_sublista_id`)
+  PRIMARY KEY (`rutina_id`, `parametro_sublista_id`),
+  CONSTRAINT FK_rutina_jt_rutina_parametro_sublista FOREIGN KEY (`rutina_id`)
+  REFERENCES rutina(id),
+  CONSTRAINT FK_parametro_sublista_jt_rutina_parametro_sublista FOREIGN KEY (`parametro_sublista_id`)
   REFERENCES parametro_sublista(id)
 )
 ENGINE=InnoDB;
-
-
-
-
-
-
-
-
-
-
-
 

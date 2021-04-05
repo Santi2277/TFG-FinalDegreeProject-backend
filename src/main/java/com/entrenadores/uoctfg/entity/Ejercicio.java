@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="ejercicio")
@@ -49,9 +50,32 @@ public class Ejercicio {
     @JoinColumn(name = "creador_id", nullable = false)
     private Perfil creador;
     
-   
-   
+    @ManyToOne
+    @JoinColumn(name = "modificador_id", nullable = false)
+    private Perfil modificador;
     
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+      name = "ejercicio_jt_parametro_lista", 
+      joinColumns = @JoinColumn(name = "ejercicio_id", referencedColumnName = "id"), 
+      inverseJoinColumns = @JoinColumn(name = "parametro_lista_id", referencedColumnName = "id"))
+    List<ParametroLista> parametroListas;
+    
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+      name = "ejercicio_jt_parametro_sublista", 
+      joinColumns = @JoinColumn(name = "ejercicio_id", referencedColumnName = "id"), 
+      inverseJoinColumns = @JoinColumn(name = "parametro_sublista_id", referencedColumnName = "id"))
+    List<ParametroSublista> parametroSublistas;
+    
+    @ManyToMany(mappedBy = "ejercicios")
+    List<Multimedia> multimedias;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ejercicio")
+    private List<MedidaParametroEjercicio> medidasParametroEjercicio;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ejercicio")
+    private List<RutinaDiaEjercicioMedidaParametroEjercicio> rutinasDiaEjercicioMedidaParametroEjercicio;
     
     
 }

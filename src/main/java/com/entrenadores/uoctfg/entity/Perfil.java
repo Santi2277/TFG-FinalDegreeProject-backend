@@ -38,17 +38,61 @@ public class Perfil {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
     private List<Ejercicio> ejerciciosCreador;
     
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<Ejercicio> ejerciciosModificador;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
     private List<Parametro> parametrosCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<Parametro> parametrosModificador;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
     private List<ParametroGrupo> parametrosGrupoCreador;
     
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<ParametroGrupo> parametrosGrupoModificador;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
     private List<ParametroLista> parametroListasCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<ParametroLista> parametroListasModificador;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
     private List<ParametroSublista> parametroSublistasCreador;
     
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<ParametroSublista> parametroSublistasModificador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<MedidaGrupo> medidasGrupoCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<MedidaGrupo> medidasGrupoModificador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<MedidaUnidad> medidasUnidadCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<MedidaUnidad> medidasUnidadModificador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<MedidaParametroEjercicio> medidasParametroEjercicioCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<MedidaParametroEjercicio> medidasParametroEjercicioModificador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<Rutina> rutinasCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<Rutina> rutinasModificador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")
+    private List<RutinaDia> rutinasDiaCreador;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modificador")
+    private List<RutinaDia> rutinasDiaModificador;
     
 }

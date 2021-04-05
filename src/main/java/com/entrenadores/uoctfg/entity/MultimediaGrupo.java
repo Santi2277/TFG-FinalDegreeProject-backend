@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="multimedia_grupo")
@@ -20,5 +21,14 @@ public class MultimediaGrupo {
 
     @Column(name = "nombre")
     private String nombre;
+    
+    @Column(name = "diminutivo")
+    private String diminutivo;
+    
+    @Column(name = "info")
+    private String info;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "multimediaGrupo")
+    private List<Multimedia> multimedias;
     
 }

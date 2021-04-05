@@ -43,6 +43,10 @@ public class Parametro {
     @JoinColumn(name = "creador_id", nullable = false)
     private Perfil creador;
     
+    @ManyToOne
+    @JoinColumn(name = "modificador_id", nullable = false)
+    private Perfil modificador;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parametro")
     private List<ParametroGrupo> parametrosGrupo;
     

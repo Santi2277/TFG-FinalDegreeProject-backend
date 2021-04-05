@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="parametro_sublista")
@@ -43,7 +44,20 @@ public class ParametroSublista {
     private Perfil creador;
     
     @ManyToOne
+    @JoinColumn(name = "modificador_id", nullable = false)
+    private Perfil modificador;
+    
+    @ManyToOne
     @JoinColumn(name = "parametro_lista_id", nullable = false)
     private ParametroLista parametroLista;
+    
+    @ManyToMany(mappedBy = "parametroSublistas")
+    List<Ejercicio> ejercicios;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parametroSublista")
+    private List<MedidaParametroEjercicio> medidasParametroEjercicio;
+    
+    @ManyToMany(mappedBy = "parametroSublistas")
+    List<Rutina> rutinas;
     
 }

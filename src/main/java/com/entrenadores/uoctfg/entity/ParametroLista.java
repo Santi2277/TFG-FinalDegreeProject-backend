@@ -44,10 +44,23 @@ public class ParametroLista {
     @JoinColumn(name = "creador_id", nullable = false)
     private Perfil creador;
     
+    @ManyToOne
+    @JoinColumn(name = "modificador_id", nullable = false)
+    private Perfil modificador;
+    
     @ManyToMany(mappedBy = "parametroListas")
     List<ParametroGrupo> parametroGrupos;
     
+    @ManyToMany(mappedBy = "parametroListas")
+    List<Ejercicio> ejercicios;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parametroLista")
     private List<ParametroSublista> parametroSublistas;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parametroLista")
+    private List<MedidaParametroEjercicio> medidasParametroEjercicio;
+    
+    @ManyToMany(mappedBy = "parametroListas")
+    List<Rutina> rutinas;
     
 }

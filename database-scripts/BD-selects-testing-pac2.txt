@@ -1,0 +1,54 @@
+
+
+USE `web_1001_entrenadores` ;
+
+
+
+--PARAMETROS VERSION 1
+select e.nombre as ejercicio, ps.nombre as parametro_sublista, pl.nombre as parametro_lista, pg.nombre as parametro_grupo, p.nombre as parametro from ejercicio e
+join ejercicio_jt_parametro_lista jtx on jtx.ejercicio_id = e.id
+join parametro_lista pl on pl.id = jtx.parametro_lista_id
+join ejercicio_jt_parametro_sublista jty on jty.ejercicio_id = e.id
+join parametro_sublista ps on ps.id = jty.parametro_sublista_id
+join parametro_grupo_jt_parametro_lista jtz on jtz.parametro_lista_id = pl.id
+join parametro_grupo pg on pg.id = jtz.parametro_grupo_id
+join parametro p on p.id = pg.parametro_id
+
+
+
+--PARAMETROS VERSION 2
+select pl.nombre as parametro_lista, pg.nombre as parametro_grupo, p.nombre as parametro from parametro_lista pl
+join parametro_grupo_jt_parametro_lista jtz on jtz.parametro_lista_id = pl.id
+join parametro_grupo pg on pg.id = jtz.parametro_grupo_id
+join parametro p on p.id = pg.parametro_id
+order by p.nombre desc
+
+--PARAMETROS VERSION 2 CON MEDIDAS
+SELECT e.nombre as ejercicio, pl.nombre as parametro_lista, mpe.medida_valor, mu.nombre as medida_unidad FROM ejercicio e
+join medida_parametro_ejercicio mpe on e.id = mpe.ejercicio_id
+join parametro_lista pl on pl.id = mpe.parametro_lista_id
+join medida_unidad mu on mu.id = mpe.medida_unidad_id;
+
+
+--RUTINA
+select r.nombre as rutina_nombre, rd.numero as rutina_dia_numero, e.nombre as ejercicio, rdempe.secuencia_ejercicio, pl.nombre as parametro_lista, p.nombre as parametro, mpe.medida_valor, mu.nombre as medida_unidad from rutina_dia rd
+join rutina r on r.id = rd.rutina_id
+join rutina_dia_jtm_ejercicio_jtm_medida_parametro_ejercicio rdempe on rdempe.rutina_dia_id = rd.id
+join ejercicio e on e.id = rdempe.ejercicio_id
+join medida_parametro_ejercicio mpe on rdempe.medida_parametro_ejercicio_id = mpe.id
+join parametro_lista pl on pl.id = mpe.parametro_lista_id
+join parametro_grupo_jt_parametro_lista jtz on jtz.parametro_lista_id = pl.id
+join parametro_grupo pg on pg.id = jtz.parametro_grupo_id
+join parametro p on p.id = pg.parametro_id
+join medida_unidad mu on mu.id = mpe.medida_unidad_id
+where r.nombre = 'rutina test 01'
+
+
+
+
+
+
+
+
+
+

@@ -8,14 +8,13 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name="parametro_grupo")
+@Table(name="rutina")
 @Data
-public class ParametroGrupo {
+public class Rutina {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
@@ -23,8 +22,14 @@ public class ParametroGrupo {
     @Column(name = "nombre")
     private String nombre;
     
-    @Column(name = "diminutivo")
-    private String diminutivo;
+    @Column(name = "numero_dias")
+    private int numeroDias;
+    
+    @Column(name = "parametro_libre")
+    private boolean parametroLibre;
+    
+    @Column(name = "descripcion_corta")
+    private String descripcionCorta;
     
     @Column(name = "info")
     private String info;
@@ -48,15 +53,21 @@ public class ParametroGrupo {
     @JoinColumn(name = "modificador_id", nullable = false)
     private Perfil modificador;
     
-    @ManyToOne
-    @JoinColumn(name = "parametro_id", nullable = false)
-    private Parametro parametro;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutina")
+    private List<RutinaDia> rutinasDia;
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-      name = "parametro_grupo_jt_parametro_lista", 
-      joinColumns = @JoinColumn(name = "parametro_grupo_id", referencedColumnName = "id"), 
+      name = "rutina_jt_parametro_lista", 
+      joinColumns = @JoinColumn(name = "rutina_id", referencedColumnName = "id"), 
       inverseJoinColumns = @JoinColumn(name = "parametro_lista_id", referencedColumnName = "id"))
     List<ParametroLista> parametroListas;
     
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+      name = "rutina_jt_parametro_sublista", 
+      joinColumns = @JoinColumn(name = "rutina_id", referencedColumnName = "id"), 
+      inverseJoinColumns = @JoinColumn(name = "parametro_sublista_id", referencedColumnName = "id"))
+    List<ParametroSublista> parametroSublistas;
+	
 }

@@ -29,13 +29,13 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 
-        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
+        //HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
 
         // disable HTTP methods for Product: PUT, POST, DELETE and PATCH
-        config.getExposureConfiguration()
-                .forDomainType(Ejercicio.class)
-                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
-                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+        //config.getExposureConfiguration()
+          //      .forDomainType(Ejercicio.class)
+            //    .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+              //  .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 
      // call an internal helper method
         exposeIds(config);
