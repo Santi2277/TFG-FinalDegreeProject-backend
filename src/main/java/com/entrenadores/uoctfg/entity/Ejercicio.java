@@ -43,15 +43,15 @@ public class Ejercicio {
     private Date fechaModificacion;
     
     @ManyToOne
-    @JoinColumn(name = "ejercicio_grupo_id", nullable = false)
+    @JoinColumn(name = "ejercicio_grupo_id")
     private EjercicioGrupo ejercicioGrupo;
     
     @ManyToOne
-    @JoinColumn(name = "creador_id", nullable = false)
+    @JoinColumn(name = "creador_id")
     private Perfil creador;
     
     @ManyToOne
-    @JoinColumn(name = "modificador_id", nullable = false)
+    @JoinColumn(name = "modificador_id")
     private Perfil modificador;
     
     @ManyToMany(cascade = CascadeType.ALL)

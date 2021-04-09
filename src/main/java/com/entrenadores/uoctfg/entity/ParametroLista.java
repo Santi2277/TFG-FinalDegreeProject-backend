@@ -41,11 +41,11 @@ public class ParametroLista {
     private Date fechaModificacion;
     
     @ManyToOne
-    @JoinColumn(name = "creador_id", nullable = false)
+    @JoinColumn(name = "creador_id")
     private Perfil creador;
     
     @ManyToOne
-    @JoinColumn(name = "modificador_id", nullable = false)
+    @JoinColumn(name = "modificador_id")
     private Perfil modificador;
     
     @ManyToMany(mappedBy = "parametroListas")

@@ -2,7 +2,7 @@
 
 USE `web_1001_entrenadores` ;
 
-
+http://localhost:8080/api/perfils
 
 --PARAMETROS VERSION 1
 select e.nombre as ejercicio, ps.nombre as parametro_sublista, pl.nombre as parametro_lista, pg.nombre as parametro_grupo, p.nombre as parametro from ejercicio e

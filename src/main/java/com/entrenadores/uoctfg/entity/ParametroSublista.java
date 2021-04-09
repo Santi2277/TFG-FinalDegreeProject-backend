@@ -40,15 +40,15 @@ public class ParametroSublista {
     private Date fechaModificacion;
     
     @ManyToOne
-    @JoinColumn(name = "creador_id", nullable = false)
+    @JoinColumn(name = "creador_id")
     private Perfil creador;
     
     @ManyToOne
-    @JoinColumn(name = "modificador_id", nullable = false)
+    @JoinColumn(name = "modificador_id")
     private Perfil modificador;
     
     @ManyToOne
-    @JoinColumn(name = "parametro_lista_id", nullable = false)
+    @JoinColumn(name = "parametro_lista_id")
     private ParametroLista parametroLista;
     
     @ManyToMany(mappedBy = "parametroSublistas")

@@ -33,7 +33,7 @@ public class Multimedia {
     private String info;
     
     @ManyToOne
-    @JoinColumn(name = "multimedia_grupo_id", nullable = false)
+    @JoinColumn(name = "multimedia_grupo_id")
     private MultimediaGrupo multimediaGrupo;
     
     @ManyToMany(cascade = CascadeType.ALL)

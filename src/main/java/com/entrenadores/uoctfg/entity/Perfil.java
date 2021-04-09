@@ -32,7 +32,7 @@ public class Perfil {
     private String nick;
     
     @ManyToOne
-    @JoinColumn(name = "perfil_grupo_id", nullable = false)
+    @JoinColumn(name = "perfil_grupo_id")
     private PerfilGrupo perfilGrupo;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creador")

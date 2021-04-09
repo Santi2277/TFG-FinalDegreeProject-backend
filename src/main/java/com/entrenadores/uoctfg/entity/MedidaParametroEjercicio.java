@@ -34,27 +34,27 @@ public class MedidaParametroEjercicio {
     private Date fechaModificacion;
     
     @ManyToOne
-    @JoinColumn(name = "creador_id", nullable = false)
+    @JoinColumn(name = "creador_id")
     private Perfil creador;
     
     @ManyToOne
-    @JoinColumn(name = "modificador_id", nullable = false)
+    @JoinColumn(name = "modificador_id")
     private Perfil modificador;
 	
     @ManyToOne
-    @JoinColumn(name = "ejercicio_id", nullable = false)
+    @JoinColumn(name = "ejercicio_id")
     private Ejercicio ejercicio;
     
     @ManyToOne
-    @JoinColumn(name = "medida_unidad_id", nullable = false)
+    @JoinColumn(name = "medida_unidad_id")
     private MedidaUnidad medidaUnidad;
     
     @ManyToOne
-    @JoinColumn(name = "parametro_lista_id", nullable = false)
+    @JoinColumn(name = "parametro_lista_id")
     private ParametroLista parametroLista;
     
     @ManyToOne
-    @JoinColumn(name = "parametro_sublista_id", nullable = false)
+    @JoinColumn(name = "parametro_sublista_id")
     private ParametroSublista parametroSublista;
 	
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medidaParametroEjercicio")

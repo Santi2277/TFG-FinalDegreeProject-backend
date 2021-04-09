@@ -23,15 +23,15 @@ public class RutinaDiaEjercicioMedidaParametroEjercicio {
     private int secuenciaEjercicio;
 	
 	@ManyToOne
-    @JoinColumn(name = "rutina_dia_id", nullable = false)
+    @JoinColumn(name = "rutina_dia_id")
     private RutinaDia rutinaDia;
 	
 	@ManyToOne
-    @JoinColumn(name = "ejercicio_id", nullable = false)
+    @JoinColumn(name = "ejercicio_id")
     private Ejercicio ejercicio;
 	
 	@ManyToOne
-    @JoinColumn(name = "medida_parametro_ejercicio_id", nullable = false)
+    @JoinColumn(name = "medida_parametro_ejercicio_id")
     private MedidaParametroEjercicio medidaParametroEjercicio;
 	
 	

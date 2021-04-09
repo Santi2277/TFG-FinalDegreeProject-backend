@@ -40,15 +40,15 @@ public class MedidaUnidad {
     private Date fechaModificacion;
     
     @ManyToOne
-    @JoinColumn(name = "creador_id", nullable = false)
+    @JoinColumn(name = "creador_id")
     private Perfil creador;
     
     @ManyToOne
-    @JoinColumn(name = "modificador_id", nullable = false)
+    @JoinColumn(name = "modificador_id")
     private Perfil modificador;
     
     @ManyToOne
-    @JoinColumn(name = "medida_grupo_id", nullable = false)
+    @JoinColumn(name = "medida_grupo_id")
     private MedidaGrupo medidaGrupo;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medidaUnidad")
