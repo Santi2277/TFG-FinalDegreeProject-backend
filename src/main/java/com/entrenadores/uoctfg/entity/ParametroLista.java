@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-@Entity
+@Entity(name="ParametroLista")
 @Table(name="parametro_lista")
 @Data
 public class ParametroLista {
