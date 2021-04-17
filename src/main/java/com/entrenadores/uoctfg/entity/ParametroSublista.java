@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity(name="ParametroSublista")
 @Table(name="parametro_sublista")
 @Data
 public class ParametroSublista {

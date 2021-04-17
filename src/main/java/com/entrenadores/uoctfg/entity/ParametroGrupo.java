@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-@Entity
+@Entity(name="ParametroGrupo")
 @Table(name="parametro_grupo")
 @Data
 public class ParametroGrupo {
