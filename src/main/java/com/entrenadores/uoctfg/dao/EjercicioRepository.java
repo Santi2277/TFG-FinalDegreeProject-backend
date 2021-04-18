@@ -19,12 +19,12 @@ public interface EjercicioRepository extends JpaRepository<Ejercicio, Long> {
 			"and lower(e.descripcionCorta) like lower (concat('%', :descripcion, '%'))"+
 			"and lower(e.descripcionLarga) like lower (concat('%', :descripcion, '%'))"+
 			"and lower(e.creador.nick) like lower (concat('%', :entrenador, '%'))"+
-			"and e.id IN (select e from Ejercicio e join e.parametroListas pl where lower(pl.nombre) like lower (concat('%', :parametrovalor1, '%')) )"+
-			"and e.id IN (select e from Ejercicio e join e.parametroSublistas psl where lower(psl.nombre) like lower (concat('%', :parametrosubvalor1, '%')) )"+
-			"and e.id IN (select e from Ejercicio e join e.parametroListas pl where lower(pl.nombre) like lower (concat('%', :parametrovalor2, '%')) )"+
-			"and e.id IN (select e from Ejercicio e join e.parametroSublistas psl where lower(psl.nombre) like lower (concat('%', :parametrosubvalor2, '%')) )"+
-			"and e.id IN (select e from Ejercicio e join e.parametroListas pl where lower(pl.nombre) like lower (concat('%', :parametrovalor3, '%')) )"+
-			"and e.id IN (select e from Ejercicio e join e.parametroSublistas psl where lower(psl.nombre) like lower (concat('%', :parametrosubvalor3, '%')) )")
+			"and e.id IN (select e from Ejercicio e join e.parametroListas pl where (pl.id like concat('%', :parametrovalor1, '%')))"+
+			"and e.id IN (select e from Ejercicio e join e.parametroSublistas psl where (psl.id like concat('%', :parametrosubvalor1, '%')))"+
+			"and e.id IN (select e from Ejercicio e join e.parametroListas pl where (pl.id like concat('%', :parametrovalor2, '%')))"+
+			"and e.id IN (select e from Ejercicio e join e.parametroSublistas psl where (psl.id like concat('%', :parametrosubvalor2, '%')))"+
+			"and e.id IN (select e from Ejercicio e join e.parametroListas pl where (pl.id like concat('%', :parametrovalor3, '%')))"+
+			"and e.id IN (select e from Ejercicio e join e.parametroSublistas psl where (psl.id like concat('%', :parametrosubvalor3, '%')))")
 	List<Ejercicio> buscarEjercicio(@RequestParam("nombre") String nombre,
 			@RequestParam("descripcion") String descripcion,
 			@RequestParam("entrenador") String entrenador,
