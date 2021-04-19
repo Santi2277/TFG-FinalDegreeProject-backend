@@ -5,6 +5,7 @@ import com.entrenadores.uoctfg.entity.Ejercicio;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -26,7 +27,7 @@ public interface EjercicioRepository extends JpaRepository<Ejercicio, Long> {
 			"and e.id IN (select e from Ejercicio e join e.parametroSublistas psl where (:parametrosubvalor2 = '' or (psl.id like concat('', :parametrosubvalor2, ''))))"+
 			"and e.id IN (select e from Ejercicio e join e.parametroListas pl where (:parametrovalor3 = '' or (pl.id like concat('', :parametrovalor3, ''))))"+
 			"and e.id IN (select e from Ejercicio e join e.parametroSublistas psl where (:parametrosubvalor3 = '' or (psl.id like concat('', :parametrosubvalor3, ''))))")
-	List<Ejercicio> buscarEjercicio(@RequestParam("nombre") String nombre,
+	Page<Ejercicio> buscarEjercicio(@RequestParam("nombre") String nombre,
 			@RequestParam("descripcion") String descripcion,
 			@RequestParam("entrenador") String entrenador,
 			@RequestParam("parametrovalor1") String parametrovalor1,
@@ -34,5 +35,6 @@ public interface EjercicioRepository extends JpaRepository<Ejercicio, Long> {
 			@RequestParam("parametrovalor2") String parametrovalor2,
 			@RequestParam("parametrosubvalor2") String parametrosubvalor2,
 			@RequestParam("parametrovalor3") String parametrovalor3,
-			@RequestParam("parametrosubvalor3") String parametrosubvalor3);
+			@RequestParam("parametrosubvalor3") String parametrosubvalor3,
+			Pageable pageable);
 }
