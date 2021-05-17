@@ -22,7 +22,7 @@ public interface ParametroGrupoRepository extends JpaRepository<ParametroGrupo, 
 	
 	@Query("select pg from ParametroGrupo pg where lower(pg.nombre) like lower (concat('%', :nombre, '%'))"+
 			"and lower(pg.diminutivo) like lower (concat('%', :diminutivo, '%'))"+
-			"and pg.id IN (select pg from ParametroGrupo pg join pg.parametro p where (:parametro = '' or (p.id like concat('', :parametro, ''))))")
+			"and pg.id IN (select pg from ParametroGrupo pg left join pg.parametro p where (:parametro = '' or (p.id like concat('', :parametro, ''))))")
 	Page<ParametroGrupo> buscarParametroGrupo(@RequestParam("nombre") String nombre,
 			@RequestParam("diminutivo") String diminutivo,
 			@RequestParam("parametro") String parametro,

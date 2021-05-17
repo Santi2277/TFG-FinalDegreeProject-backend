@@ -23,7 +23,7 @@ public interface ParametroListaRepository extends JpaRepository<ParametroLista, 
 	
 	@Query("select pl from ParametroLista pl where lower(pl.nombre) like lower (concat('%', :nombre, '%'))"+
 			"and lower(pl.diminutivo) like lower (concat('%', :diminutivo, '%'))"+
-			"and pl.id IN (select pl from ParametroLista pl join pl.parametroGrupos pg where (:parametrogrupo = '' or (pg.id like concat('', :parametrogrupo, ''))))")
+			"and pl.id IN (select pl from ParametroLista pl left join pl.parametroGrupos pg where (:parametrogrupo = '' or (pg.id like concat('', :parametrogrupo, ''))))")
 	Page<ParametroLista> buscarParametroLista(@RequestParam("nombre") String nombre,
 			@RequestParam("diminutivo") String diminutivo,
 			@RequestParam("parametrogrupo") String parametrogrupo,
