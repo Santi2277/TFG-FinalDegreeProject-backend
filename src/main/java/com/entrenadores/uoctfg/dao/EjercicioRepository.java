@@ -37,4 +37,6 @@ public interface EjercicioRepository extends JpaRepository<Ejercicio, Long> {
 			@RequestParam("parametrovalor3") String parametrovalor3,
 			@RequestParam("parametrosubvalor3") String parametrosubvalor3,
 			Pageable pageable);
+	
+	
 }
